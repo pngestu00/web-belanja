@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Produk Belanjaan</title>
+    <style>
+        /* tambahkan gaya dasar untuk membuat tampilan lebih menarik dan rapi */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product-item {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #050505;
+            border-radius: 10px;
+            width: 200px;
+        }
+        .product-item:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-name {
+            font-weight: bold;
+        }
+        .product-price {
+            color: #050505;
+        }
+        .product-category {
+            font-size: 12px;
+            color: #050505;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daftar Produk Belanjaan</h1>
+    <div class="product-list" id="product-list"></div>
+    
+
+    <script>
+        // struktur data produk
+        const products = [
+            { name: "Apple iPhone 13", price: 15000000, category: "Elektronik" },
+            { name: "Samsung TV 4K", price: 20000000, category: "Elektronik" },
+            { name: "Nike Air Max", price: 1500000, category: "Fashion" },
+            { name: "Adidas Ultraboost", price: 1200000, category: "Fashion" },
+            { name: "Asus Laptop", price: 8000000, category: "Elektronik" },
+            { name: "Canon Camera", price: 5000000, category: "Elektronik" },
+        ];
+
+        // transformasi data menggunakan map()
+        const productListHTML = products.map((product) => {
+            return `
+                <div class="product-item">
+                    <h2 class="product-name">${product.name}</h2>
+                    <p class="product-price">Rp ${product.price.toLocaleString()}</p>
+                    <p class="product-category">${product.category}</p>
+                </div>
+            `;
+        });
+
+        // tampilkan data di halaman web
+        const productListContainer = document.getElementById("product-list");
+        productListContainer.innerHTML = productListHTML.join("");
+    </script>
+</body>
+</html>
